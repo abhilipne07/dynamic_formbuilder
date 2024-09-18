@@ -48,11 +48,16 @@ const DropdownComponent = ({ field, StateDrop, hidden }) => {
         <>
           {field.StateDrop ? (
             <>
-              {field.fieldLabel === 'State' ? (
+                {field.fieldLabel && (
+                  <label htmlFor={field.ElementID} className='mt-2' style={{ display: 'block', marginBottom: '0.5em' }}>
+                      {field.fieldLabel}
+                  </label>
+                  )}
+                {field.fieldLabel === 'State' ? (
+                
                 // State Dropdown
                 <Select
                   showSearch
-                  className='mt-2'
                   style={{ width: '100%' }}
                   {...formikField}
                   placeholder="Select State"
@@ -72,7 +77,6 @@ const DropdownComponent = ({ field, StateDrop, hidden }) => {
                 // City Dropdown
                 <Select
                   showSearch
-                  className='mt-2'
                   style={{ width: '100%' }}
                   {...formikField}
                   placeholder="Select City"
@@ -92,7 +96,6 @@ const DropdownComponent = ({ field, StateDrop, hidden }) => {
           ) : (
             // Single Dropdown
             <Select
-              className='mt-2'
               style={{ width: '100%' }}
               {...formikField}
               placeholder={field.fieldLabel}

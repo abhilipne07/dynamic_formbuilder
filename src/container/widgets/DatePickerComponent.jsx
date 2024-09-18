@@ -11,7 +11,7 @@ const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY', 'DD-MM-YYYY', 'DD-MM-YY'];
 const customFormat = (value) => `custom format: ${value.format(dateFormat)}`;
 
 const DatePickerComponent = ({ field }) => {
-    const { hidden, fieldLabel, format, picker, defaultValue, errorMessage } = field;
+    const { hidden, fieldLabel, format, picker, defaultValue, errorMessage, ElementID } = field;
 
     if (hidden) {
         return null;
@@ -24,6 +24,11 @@ const DatePickerComponent = ({ field }) => {
         <Field name={field.ElementID}>
             {({ field: formikField, meta, form }) => (
                 <>
+                    {fieldLabel && (
+                        <label htmlFor={ElementID} className='mt-2' style={{ display: 'block', marginBottom: '0.5em' }}>
+                            {fieldLabel}
+                        </label>
+                        )}
                     <DatePicker
                         {...formikField}
                         format={format || dateFormat}
